@@ -1023,4 +1023,33 @@
         // Event listeners
         velocitySlider.addEventListener('input', updateDisplayedValues);
         lengthSlider.addEventListener('input', updateDisplayedValues);
-        diameterSlider
+        diameterSlider.addEventListener('input', updateDisplayedValues);
+        elasticitySlider.addEventListener('input', updateDisplayedValues);
+        
+        startBtn.addEventListener('click', startSimulation);
+        resetBtn.addEventListener('click', resetSimulation);
+        valve.addEventListener('click', closeValve);
+        slowMotionBtn.addEventListener('click', toggleSlowMotion);
+        showWaveBtn.addEventListener('click', toggleShowWave);
+        
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDisplayedValues();
+            initializeCharts();
+            createFlowArrows();
+            
+            // Agregar estilo para animación de flechas
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes flowAnimation {
+                    0% { opacity: 0; transform: translateY(-50%) translateX(0); }
+                    10% { opacity: 0.8; }
+                    90% { opacity: 0.8; }
+                    100% { opacity: 0; transform: translateY(-50%) translateX(30px); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
